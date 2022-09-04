@@ -1,0 +1,82 @@
+---
+title: 剑指Offer | 数组中重复的数字
+date: 2022-09-04 17:43:32
+tags:
+- 剑指Offer
+- 数组
+updated:
+categories:
+- 算法
+keywords:
+- 算法
+- 剑指Offer
+- 数组
+description: 找出数组中重复的数字。
+---
+# 题目描述
+> 在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。
+> **示例输入：**[2, 3, 1, 0, 2, 5, 3]
+> **输出：**2 或 3
+> **限制：**2 <= n <= 100000
+
+---
+
+# 题解
+## 排序遍历
+对数组排序，然后遍历，遇到重复的数字则返回。
+```C++
+class Solution {
+public:
+    int findRepeatNumber(vector<int>& nums) {
+        int n = nums.size();
+        sort(nums.begin(), nums.begin() + n);
+        for (int i = 1; i < n; i++) {
+            if (nums[i] == nums[i - 1]) {
+                return nums[i];
+            }
+        }
+        return -1;
+    }
+};
+```
+**时间复杂度：_O(nlog(n))_**，**空间复杂度：_O(1)_**
+
+## 哈希表
+遍历数组，使用哈希表记录数组的各个数字，遇到重复数字则返回。
+```C++
+class Solution {
+public:
+    int findRepeatNumber(vector<int>& nums) {
+        unordered_map<int, bool> map;
+        for (int num : nums) {
+            if (map[num]) return num;
+            map[num] = true;
+        }
+        return -1;
+    }
+};
+```
+**时间复杂度：_O(n)_**，**空间复杂度：_O(n)_**
+
+## 原地交换
+题目说明**长度为 n** 的数组 nums 里**所有数字都在 0 ~ n-1 的范围内**。所以该数组的索引和元素是一对多的关系，遍历数组并通过交换操作，使索引和元素值一一对应，即 nums[i] = i。通过数组索引和元素值的对应关系，起到与哈希表等价的作用，可以理解为利用原数组的空间作为哈希存储空间。
+```C++
+class Solution {
+public:
+    int findRepeatNumber(vector<int>& nums) {
+        int i = 0;
+        while (i < nums.size()) {
+            if (nums[i] == i) { // 在索引 i 之前，数组元素和索引都对应
+                i++;
+                continue;
+            }
+            // nums[i] != i
+            if (nums[nums[i]] == nums[i]) // 数组元素对应的索引处已有相等的元素
+                return nums[i];
+            swap(nums[i], nums[nums[i]]); // 能交换则执行交换
+        }
+        return -1;
+    }
+};
+```
+**时间复杂度：_O(n)_**，**空间复杂度：_O(1)_**
