@@ -1,0 +1,22 @@
+# - class_name: 友情链接
+#   class_desc: 那些人，那些事
+
+#   link_list:
+#     - name: PEACE's blog
+#       link: https://www.wangjiapeng.com/
+#       avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+#       descr: PEACE's blog
+
+- class_name: 网站
+  class_desc: 
+  
+  link_list:
+    - name: Hexo|Doc
+      link: https://hexo.io/docs/
+      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      descr: Hexo官方文档
+
+    - name: Butterfly
+      link: https://butterfly.js.org/
+      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      descr: Butterfly安装文档
