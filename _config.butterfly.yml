@@ -106,7 +106,7 @@ tag_per_img:
 
 # If the banner of category page not setting, it will show the top_img
 # note: category page, not categories page (子分類頁面的 top_img)
-category_img: https://s2.loli.net/2022/09/03/yCmnkZiuMl2dFHT.jpg
+category_img: https://s2.loli.net/2022/09/09/sEhnp3JA47rFHXq.jpg
 
 # The banner image of category page
 # format:
@@ -658,8 +658,8 @@ aside:
       icon: fab fa-github
       text: Blog in Github
       link: https://github.com/PEACE02/blog
-  card_announcement:
-    enable: true
+  card_announcement: # 公告
+    enable: false
     content: This is my Blog
   card_recent_post:
     enable: true
