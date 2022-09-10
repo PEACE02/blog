@@ -18,7 +18,7 @@ description: # 文章描述
 # copyright_url:
 # copyright_info:
 # mathjax:
-# katex:
+# katex: true
 # aplayer:
 # highlight_shrink:
 # aside:

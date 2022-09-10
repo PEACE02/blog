@@ -68,7 +68,7 @@ mathjax:
 
 # KaTeX
 katex:
-  enable: false
+  enable: true
   per_page: false
   hide_scrollbar: true
 
@@ -97,7 +97,7 @@ archive_img: https://s2.loli.net/2022/09/03/jst3uowni69vCbA.jpg
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: https://s2.loli.net/2022/09/03/McIZd59qUTavYBs.jpg
+tag_img: https://s2.loli.net/2022/09/10/mVurYdy72W5xTUR.jpg
 
 # The banner image of tag page
 # format:
