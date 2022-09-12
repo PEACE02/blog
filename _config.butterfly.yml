@@ -468,10 +468,10 @@ google_adsense:
 # --------------------------------------
 
 site_verification:
-  # - name: google-site-verification
-  #   content: xxxxxx
-  # - name: baidu-site-verification
-  #   content: xxxxxxx
+  - name: google-site-verification
+    content: 2utdT6lJgQitzQi_zRW00opYpjJW_vFbyemyiRrTJUM
+  - name: baidu-site-verification
+    content: code-zJWnXWZQkC
 
 # Beautify/Effect (美化/效果)
 # --------------------------------------
