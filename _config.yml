@@ -4,9 +4,10 @@
 
 # Site
 title: PEACE's Blog
-subtitle: 'Welcome!'
-description: ''
+subtitle: Welcome!
+description: 王佳鹏的博客
 keywords:
+  - 王佳鹏的博客
 author: PEACE
 language: zh-CN
 timezone: ''
