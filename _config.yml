@@ -106,3 +106,9 @@ deploy:
   # repo: git@github.com:PEACE02/blog.git
   # branch: main
   # message: hexo deploy - {{ now('YYYY-MM-DD HH:mm:ss') }}
+
+# 网站收录
+sitemap:
+  path: sitemap.xml # 索引地图路径
+  tag: false # 标签页不添加到网站地图中
+  category: false # 分类页不添加到网站地图中
