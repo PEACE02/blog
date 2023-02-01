@@ -20,7 +20,7 @@ highlight_theme: mac light #  darker / pale night / light / ocean / mac / mac li
 highlight_copy: true # copy button
 highlight_lang: true # show the code language
 highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
-highlight_height_limit: 200 # false / unit: px
+highlight_height_limit: 300 # false / unit: px
 code_word_wrap: false
 
 # copy settings
@@ -76,7 +76,7 @@ katex:
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: /img/favicon.png
+favicon: https://s2.loli.net/2023/02/01/8BG657OhWaRVAlx.png
 
 # Avatar (頭像)
 avatar:
