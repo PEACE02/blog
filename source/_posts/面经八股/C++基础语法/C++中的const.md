@@ -41,9 +41,9 @@ const int a = 10;
 const int* p = &a;
 int* q = const_cast<int*>(p);
 *q = 20;
-std::cout << "a = " << a << std::endl;		//  a = 10
-std::cout << "*p = " << *p << std::endl;	// *p = 20
-std::cout << "*q = " << *q << std::endl;	// *q = 20
+std::cout << "a = " << a << std::endl;      //  a = 10
+std::cout << "*p = " << *p << std::endl;    // *p = 20
+std::cout << "*q = " << *q << std::endl;    // *q = 20
 ```
 
 在上面例子中，将 `p` 声明为 `const int*` 类型，为指向只读变量 `a` 的指针。然后使用 `const_cast` 将 `p` 强制转换为 `int*` 类型的指针 `q`，从而去掉了 `const` 限制，接下来通过指针 `q` 间接修改了变量 a 的值。
@@ -164,12 +164,12 @@ int a = 10;
 const int b = 20;
 	
 int* q;
-q = &a;	    // √，普通指针指向普通变量 
-q = &b;	    // [Error] invalid conversion from 'const int*' to 'int*' [-fpermissive]
+q = &a;		// √，普通指针指向普通变量 
+q = &b;		// [Error] invalid conversion from 'const int*' to 'int*' [-fpermissive]
 	
 const int* p;   // 和  int const* p; 一样 
-p = &a;	        // √，常量指针可以指向普通变量 
-p = &b;	        // √，常量指针本身可以修改，且可以指向只读变量 
+p = &a;         // √，常量指针可以指向普通变量 
+p = &b;         // √，常量指针本身可以修改，且可以指向只读变量 
 *p = 30;        // [Error] assignment of read-only location '* p'
 ```
 在上面的例子中，使用 `int*` 声明了一个普通指针 `q`，只能指向普通常量，不能指向只读常量；使用 `const int*` 声明了一个指向只读变量的指针 `p`，既可以指向普通变量，也可以指向只读变量，但是无法通过指针修改只读变量的值。
@@ -200,9 +200,9 @@ p = nullptr;        // [Error] assignment of read-only variable 'p'
 常量引用是指引用一个只读变量，因此不能通过常量引用修改只读变量的值。
 ```C++
 const int a = 10;
-// int& r = a;	// [Error] invalid initialization of reference of type 'int&' from expression of type 'const int'
+// int& r = a;  // [Error] invalid initialization of reference of type 'int&' from expression of type 'const int'
 const int& r = a;
-r = 20;		// [Error] assignment of read-only reference 'r'
+r = 20;         // [Error] assignment of read-only reference 'r'
 ```
 
 # 修饰成员函数，表示函数不会修改对象的状态
@@ -226,7 +226,7 @@ private:
 class A {
 public:
 	int func() const {
-		no_const_func();//[Error] passing 'const A' as 'this' argument of 'void A::no_const_func()' discards qualifiers [-fpermissive]
+		no_const_func();  // [Error] passing 'const A' as 'this' argument of 'void A::no_const_func()' discards qualifiers [-fpermissive]
 		return my_value;
 	}
 	void no_const_func() {}
