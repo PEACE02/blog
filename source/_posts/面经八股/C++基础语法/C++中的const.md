@@ -28,7 +28,7 @@ a = 20;	// [Error] assignment of read-only variable 'a'
 
 对 `const int` 类型取指针，就是 `const int*` 类型的指针，将其强制转换为 `int*` 类型，就去掉了 `const` 限制，从而修改变量的值。在 C++ 中，将 `const` 类型的指针强制转换为非 `const` 类型的指针被称为类型强制转换（Type Casting），这种行为称为 `const_cast`。
 
-关于 const_cast ： [C++几种类型转换的区别]()    //TODO
+关于 const_cast ： [C++几种类型转换的区别](https://www.wangjiapeng.com/2023/05/12/%E9%9D%A2%E7%BB%8F%E5%85%AB%E8%82%A1/c++%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/c++%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/)
 
 虽然可以这样操作，但这违反了 `const` 的语义，可能会导致程序崩溃或者产生未定义行为（undefined behavior），**实际编程中不可这样操作**。
 
