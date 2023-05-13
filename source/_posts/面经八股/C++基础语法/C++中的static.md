@@ -31,7 +31,7 @@ void foo() {
     a++;    // 非法，会链接错误，其他文件无法访问 a
 }
 ```
-为什么会是非法，链接错误：[extern 的作用-从链接角度理解]()  //TODO
+为什么会是非法，链接错误：[extern 的作用-从链接角度理解](https://www.wangjiapeng.com/2023/05/14/%E9%9D%A2%E7%BB%8F%E5%85%AB%E8%82%A1/c++%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/extern%20%E7%9A%84%E4%BD%9C%E7%94%A8-%E4%BB%8E%E9%93%BE%E6%8E%A5%E8%A7%92%E5%BA%A6%E7%90%86%E8%A7%A3/)
 
 
 # static 修饰局部变量
