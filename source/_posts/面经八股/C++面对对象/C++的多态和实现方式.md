@@ -236,6 +236,6 @@ int main() {
 
 [C++多态的两种形式](https://cloud.tencent.com/developer/article/1347880) 
 
-[C++多态实现方式](https://www.yuque.com/csguide/cf15wf/mns7rlkgder0mup8) 
+[C++多态实现方式](https://csguide.cn/cpp/object_oriented/polymorphism_in_cplusplus.html) 
 
 [C++之多态](https://blog.csdn.net/qq_39412582/article/details/81628254) 
