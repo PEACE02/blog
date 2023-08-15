@@ -652,7 +652,7 @@ aside:
     category: true
   card_author:
     enable: true
-    description: A szuer. 
+    description: 勿在浮沙筑高台。
     button:
       enable: true
       icon: fab fa-github
