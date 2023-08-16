@@ -8,7 +8,7 @@ categories:
 - C++面对对象
 keywords:
 description: 派生类只有一个基类，称为单继承（Single Inheritance）。除此之外，C++也支持多继承（Multiple Inheritance）。
-cover: https://s2.loli.net/2023/08/15/Q3J85MH76aoLvAc.jpg
+cover: https://s2.loli.net/2023/08/16/1h8GnkecMsIWFKb.jpg
 ---
 
 # 多继承
@@ -186,7 +186,7 @@ int main() {
 
 以上，我们使用作用域解析运算符解决直接的命名冲突问题。
 
-关于多重继承下的菱形继承问题和虚继承的解决方案，之后再写。
+关于多重继承下的菱形继承问题和虚继承的解决方案等，[虚继承和虚基类]()
 
 # 参考
 
