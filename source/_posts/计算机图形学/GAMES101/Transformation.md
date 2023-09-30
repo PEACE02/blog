@@ -7,7 +7,7 @@ categories:
 - 计算机图形学
 - GAMES101
 keywords:
-description: 
+description: 2D变换、齐次坐标、组合变换、3D变换
 cover: https://s2.loli.net/2023/09/28/VSBJan7xdz3pUik.jpg
 ---
 
