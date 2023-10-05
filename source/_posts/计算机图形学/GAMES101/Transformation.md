@@ -150,20 +150,18 @@ $$\begin{bmatrix}x'\\y'\\z'\\1\end{bmatrix}=\begin{bmatrix}1&0&0&t_x\\0&1&0&t_y\
 
 ![3D Transformations](https://s2.loli.net/2023/10/01/CmX6aDLiG5Po8hn.png)
 
-- 绕 x 轴旋转，x 坐标不变，$\overset\rightharpoonup y\times\overset\rightharpoonup z=+\overset\rightharpoonup x$，在 y-z 平面旋转 θ，$R_x(\theta)$ 的 y, z 坐标矩阵与 2D 旋转矩阵 $R_\theta$ 相同；
-
-- 绕 z 轴旋转，z 坐标不变，$\overset\rightharpoonup x\times\overset\rightharpoonup y=+\overset\rightharpoonup z$，在 x-y 平面旋转 θ，$R_z(\theta)$ 的 x, y 坐标矩阵与 2D 旋转矩阵 $R_\theta$ 相同；
-
-- 绕 y 轴旋转，y 坐标不变，$\overset\rightharpoonup z\times\overset\rightharpoonup x=+\overset\rightharpoonup y$，在 z-x 平面旋转 θ，$R_y(\theta)$ 的 z, x 坐标矩阵与 2D 旋转矩阵 $R_\theta$ 相同；
+> - 绕 x 轴旋转，x 坐标不变，$\overset\rightharpoonup y\times\overset\rightharpoonup z=+\overset\rightharpoonup x$，在 y-z 平面旋转 θ，$R_x(\theta)$ 的 y, z 坐标矩阵与 2D 旋转矩阵 $R_\theta$ 相同；
+> 
+> - 绕 z 轴旋转，z 坐标不变，$\overset\rightharpoonup x\times\overset\rightharpoonup y=+\overset\rightharpoonup z$，在 x-y 平面旋转 θ，$R_z(\theta)$ 的 x, y 坐标矩阵与 2D 旋转矩阵 $R_\theta$ 相同；
+> 
+> - 绕 y 轴旋转，y 坐标不变，$\overset\rightharpoonup z\times\overset\rightharpoonup x=+\overset\rightharpoonup y$，在 z-x 平面旋转 θ，$R_y(\theta)$ 的 z, x 坐标矩阵与 2D 旋转矩阵 $R_\theta$ 相同；
 但是因为我们矩阵坐标顺序为 x, y, z，所以实际是 $R_y(\theta)$ 的 x, z 坐标矩阵与 2D 旋转矩阵 $R_\theta^{-1}$ 相同。
-
-> 这里关于 $R_y$ 是自己的理解，GAMES101没有细讲
-
-为什么是 $R_\theta^{-1}$ ？
-
-上面我们提到**逆变换 Inverse Transform**，不难看出，在 z-x 平面逆时针旋转 θ 的角度，相当于在 x-z 平面顺时针旋转 θ 的角度，也就是逆时针旋转 -θ 的角度，自然是一个逆变换。
-
-![Inverse Transform](https://s2.loli.net/2023/10/01/LmXgJP8naeDvRlC.png)
+> 
+> 为什么是 $R_\theta^{-1}$ ？
+> 
+> 上面我们提到**逆变换 Inverse Transform**，不难看出，在 z-x 平面逆时针旋转 θ 的角度，相当于在 x-z 平面顺时针旋转 θ 的角度，也就是逆时针旋转 -θ 的角度，自然是一个逆变换。
+> 
+> ![Inverse Transform](https://s2.loli.net/2023/10/01/LmXgJP8naeDvRlC.png)
 
 $$R_\theta=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}$$
 
@@ -258,7 +256,7 @@ $$\overset\rightharpoonup{v_{rot}}=\cos\theta\overset\rightharpoonup v+(1-\cos\t
 
 旋转以后的向量可以表示为：$\overset\rightharpoonup{v_{rot}}=R(k,\;\theta)\overset\rightharpoonup v$
 
-只需从向量表达式中提取出一个右乘的 $\overset\rightharpoonup v$，即可得：
+只需从向量表达式中提取出一个右乘（点乘）的 $\overset\rightharpoonup v$，即可得：
 
 $$R(k,\;\theta)=\cos\theta I+(1-\cos\theta)\widehat k\widehat k^T+\sin\theta K$$
 
@@ -272,6 +270,61 @@ $$R(k,\;\theta)=\cos\theta I+(1-\cos\theta)\begin{pmatrix}k_x\\k_y\\k_z\end{pmat
 # 观测变换 Viewing transformation
 
 ## 视图变换 View/Camera transformation
+
+1. 什么是视图变换？思考如何拍一张照片：
+    - 找一个好的地方安排人站位（模型变换 Model Transformation）
+    - 找一个好的角度安置相机（视图变换 View Transformation）
+    - 茄子！（投影变换 Projection Transformation）
+2. 如何进行视图变换？
+    - 首先定义相机
+        - 位置 Position $\overset\rightharpoonup e$
+        - 视线方向 Look-at / gaze direction $\widehat g$
+        - 向上方向 Up direction $\widehat t$ （想象飞机的翻滚 roll
+        ![Define the camera](https://s2.loli.net/2023/10/03/hqsWbzxGPmV1U6Z.png)
+    - 如果相机和所有的物体一起移动，“照片”将是相同的（相对静止
+        ![relatively still](https://s2.loli.net/2023/10/03/6TsekIYht5b3c1g.png)
+    - 如果我们总是变换相机到：
+        - The origin, up at Y, look at -Z
+        - 并让物体跟着相机一起变换
+        ![fixed camera position](https://s2.loli.net/2023/10/03/31HaTNjruzpe452.png)
+    - 利用视图变换矩阵 $M_{view}$ 变换相机
+        - 使其 located at origin, up at Y, look at -Z
+    - $M_{view}$ in math?
+        - 令 $M_{view}=R_{view}T_{view}$（先平移，再旋转
+        - Translate $\overset\rightharpoonup e$ to origin
+          $$T_{view}=\begin{bmatrix}1&0&0&-x_e\\0&1&0&-y_e\\0&0&1&-z_e\\0&0&0&1\end{bmatrix}$$
+        - Rotate $\widehat g$ to -Z, $\widehat t$ to Y, $\widehat g\times\widehat t$ to X
+        - 考虑它的逆旋转 Inverse rotation：X to $\widehat g\times\widehat t$, Y to $\widehat t$, Z to $-\widehat g$
+          ![inverse rotation](https://s2.loli.net/2023/10/03/16qHkxDywVrZ7Ke.png)
+
+> 为什么要考虑逆旋转？如果直接计算 $R_{view}$：
+> 
+> - Rotate $\widehat g$ to -Z, $\widehat t$ to Y, $\widehat g\times\widehat t$ to X
+>   设旋转矩阵 $R_{view}$：
+>   $$R_{view}=\begin{bmatrix}a&b&c&0\\d&e&f&0\\g&h&i&0\\0&0&0&1\end{bmatrix}$$
+>   X，Y，Z 方向分别用单位向量 $\widehat x$，$\widehat y$，$\widehat z$ 表示：
+>   $$\widehat x=\begin{pmatrix}1\\0\\0\\0\end{pmatrix}\;\;\;\widehat y=\begin{pmatrix}0\\1\\0\\0\end{pmatrix}\;\;\;\widehat z=\begin{pmatrix}0\\0\\1\\0\end{pmatrix}$$
+>   设 $\widehat g$，$\widehat t$，$\widehat g\times\widehat t$ 分别为：
+>   $$\widehat g=\begin{pmatrix}x_{\widehat g}\\y_{\widehat g}\\z_{\widehat g}\\0\end{pmatrix}\;\;\;\widehat t=\begin{pmatrix}x_{\widehat t}\\y_{\widehat t}\\z_{\widehat t}\\0\end{pmatrix}\;\;\;\widehat g\times\widehat t=\begin{pmatrix}x_{\widehat g\times\widehat t}\\y_{\widehat g\times\widehat t}\\z_{\widehat g\times\widehat t}\\0\end{pmatrix}$$
+>   则有：$-\widehat z=R_{view}\widehat g$，$\widehat y=R_{view}\widehat t$，$\widehat x=R_{view}\widehat g\times\widehat t$，但是这样计算 $R_{view}$ 确实有点困难。
+> 
+> 
+> - 考虑它的逆旋转 Inverse rotation：X to $\widehat g\times\widehat t$, Y to $\widehat t$, Z to $-\widehat g$
+>   设旋转矩阵 $R_{view}^{-1}$：
+>   $$R_{view}^{-1}=\begin{bmatrix}a&b&c&0\\d&e&f&0\\g&h&i&0\\0&0&0&1\end{bmatrix}$$
+>   则有：$\widehat g\times\widehat t=R_{view}^{-1}\widehat x$，$\widehat t=R_{view}^{-1}\widehat y$，$-\widehat g=R_{view}^{-1}\widehat z$，可以很容易计算出：
+>   $$R_{view}^{-1}=\begin{bmatrix}x_{\widehat g\times\widehat t}&x_{\widehat t}&x_{-\widehat g}&0\\y_{\widehat g\times\widehat t}&y_{\widehat t}&y_{-\widehat g}&0\\z_{\widehat g\times\widehat t}&z_{\widehat t}&z_{-\widehat g}&0\\0&0&0&1\end{bmatrix}$$
+>   前面我们提到，正交矩阵的逆等于它的转置，所以 $R_{view}=(R_{view}^{-1})^{-1}=(R_{view}^{-1})^T$
+> $$R_{view}=\begin{bmatrix}x_{\widehat g\times\widehat t}&y_{\widehat g\times\widehat t}&z_{\widehat g\times\widehat t}&0\\x_{\widehat t}&y_{\widehat t}&z_{\widehat t}&0\\x_{-\widehat g}&y_{-\widehat g}&z_{-\widehat g}&0\\0&0&0&1\end{bmatrix}$$
+
+3. 总结 Summary
+    - Transform objects together with the camera 
+    - Until camera at the origin, up at Y, look at -Z 
+
+- 视图/相机变换 View/Camera Transformation，也称为模型视图变换 ModelView Transformation
+- 我们需要它用于投影变换 Projection Transformation。
+> 这样只需要对物体应用视图变换，相机一定在默认位置上（The origin, up at Y, look at -Z）。
+
 
 ## 投影变换 Projection transformation
 
