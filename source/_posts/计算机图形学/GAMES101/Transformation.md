@@ -323,11 +323,107 @@ $$R(k,\;\theta)=\cos\theta I+(1-\cos\theta)\begin{pmatrix}k_x\\k_y\\k_z\end{pmat
 
 - 视图/相机变换 View/Camera Transformation，也称为模型视图变换 ModelView Transformation
 - 我们需要它用于投影变换 Projection Transformation。
-> 这样只需要对物体应用视图变换，相机一定在默认位置上（The origin, up at Y, look at -Z）。
+> 这样只需要对物体应用视图变换，相机就固定在默认位置上（The origin, up at Y, look at -Z）。从世界坐标系转到相机坐标系？
 
 
 ## 投影变换 Projection transformation
+- 计算机图形学中的投影
+    - 3D to 2D
+    - 正交投影 Orthographic projection
+    - 透视投影 Perspective projection（近大远小
+    ![projection](https://s2.loli.net/2023/10/05/31mojEDBkRFfXQY.png)
+- 正交投影与透视投影的对比
+    ![Perspective projection vs. orthographic projection](https://s2.loli.net/2023/10/05/RKCOSh1HBq3cklo.png)
+
 
 ### 正交投影 Orthographic projection
+- 一种简单的理解方式
+    - 相机位于原点，看向 -Z，向上方向 Y（视图变换中的默认相机位置
+    - 去掉 Z 轴（映射到 z = 0 的 x-y 平面，3D to 2D
+    - 将生成的矩形画面平移并缩放到 $[-1, 1]^2$
+    ![a simple projection](https://s2.loli.net/2023/10/05/EJqywP17u6OYUhD.png)
+- 通常情况下（规定/默认操作，方便后续计算
+    - 我们想要将长方体 [l, r] x [b, t] x [f, n] 映射到特定的 "canonical（正则、规范、标准）" 立方体 $[-1, 1]^3$
+    > [left, right] → [-1, 1]; &nbsp; [bottom, top] → [-1, 1]; &nbsp; [far, near] → [-1, 1]
+- 以简单的方式：
+    - 移动 translate 长方体的中心 center 到原点 origin
+    - 缩放 scale 到 “规范 canonical” 立方体
+    ![Orthographic Projection](https://s2.loli.net/2023/10/05/LWcyQCieYbIl2jz.png)
+- 变换矩阵
+    - Translate (center to origin) first, then scale (length/width/height to 2)
+    $$M_{ortho}=\begin{bmatrix}\frac2{r-l}&0&0&0\\0&\frac2{t-b}&0&0\\0&0&\frac2{n-f}&0\\0&0&0&1\end{bmatrix}\begin{bmatrix}1&0&0&-\frac{r+l}2\\0&1&0&-\frac{t+b}2\\0&0&1&-\frac{n+f}2\\0&0&0&1\end{bmatrix}$$
+- 注意事项
+    - 看向 -Z 方向会使近处 near 和远处 far 反直觉/不直观（n > f）
+    > 从坐标来说，直觉应该是近处坐标小，远处坐标大，而这里是 “近大远小”
+    - 仅供参考：这就是 OpenGL（图形 API）使用左手坐标的原因
+> 将长方体映射到规范立方体，不是等比例压缩，很可能造成拉伸，这没关系，后面还有变换处理。
+
 
 ### 透视投影 Perspective projection
+- 最常见于计算机图形学、艺术、视觉系统
+- 更远的物体更小（近大远小
+- 视觉效果：平行线不平行，收敛到单点
+![perspective projection](https://s2.loli.net/2023/10/05/KcbzMutrN1OJR8I.png)
+- 如何进行透视投影？
+    - 首先将四角棱台/锥台 frustum ([视锥体 viewing frustum](https://zh.wikipedia.org/zh-cn/%E8%A7%86%E4%BD%93)) “挤压” 变成长方体 cuboid
+    这样就将透视投影转换成正交投影 $M_{persp->ortho}$
+    - 然后进行正交投影（我们前面已经准备好 $M_{ortho}$
+    ![Perspective to Orthographic](https://s2.loli.net/2023/10/05/iPNBbf5zHt9oLUn.png)
+    > 这里我们规定 “挤压” 操作以确保做法唯一：
+    > - 近平面 (z = n) 上的任意点都不会改变
+    > - 远平面 (z = f) 上的任意点的 z 坐标不会改变
+    > - 远平面 (z = f) 上的中心点也不会改变
+    > 
+    >（frustum 内部的点坐标会发生变化，包括 z 坐标
+- 如何 “挤压” ？寻找一种变换 transformation
+    - 寻找变换后的点 $(x', y', z')$ 和原始点 $(x, y, z)$ 之间的关系（相似三角形
+      由相似三角形的成比例关系，可以得到 frustum 中任意点的 x, y 坐标的变换：$x'=nx/z,\;y'=ny/z$
+      但是 z 坐标的变换仍是未知的，暂且写为 unknown
+      ![the key idea to find a transformation](https://s2.loli.net/2023/10/05/foq8yYCbwuikFGU.png)
+    - 在齐次坐标 homogeneous coordinates 中：
+      ![(x', y', z') <= (x, y, z)](https://s2.loli.net/2023/10/05/YB1VRjcPoI2peDv.png)
+      > 回想之前讲过的齐次坐标的性质：
+      > $(wx, wy, wz, w),\;w\neq 0$ 和 $(x, y, z, 1)$ 表示的是 3D 中的同一点 $(x, y, z)$
+      > 例如：(1, 0, 0, 1) 和 (2, 0, 0, 2) 都表示 (1, 0, 0)
+      > 所以我们可以同时乘上一个 z (mult. by z)：$(x, y, z, 1)$ to $(xz, yz, zz, z)$
+      - 所以 “挤压”（透视到正交）投影可以做到这一点：
+      $$M_{persp\rightarrow ortho}^{(4\times4)}\begin{pmatrix}x\\y\\z\\1\end{pmatrix}=\begin{pmatrix}nx/z\\ny/z\\unknown\\1\end{pmatrix}=\begin{pmatrix}nx\\ny\\unknown\\z\end{pmatrix}$$
+    - 根据已知信息，已经足以弄清楚 $M_{persp->ortho}$ 的一部分：
+      $$M_{persp\rightarrow ortho}=\begin{pmatrix}n&0&0&0\\0&n&0&0\\?&?&?&?\\0&0&1&0\end{pmatrix}$$
+    - 显然，变换矩阵的第三行负责的是 z 坐标
+        - 近平面 (z = n) 上的任意点都不会改变：(x, y, n, 1) to (x, y, n, 1)
+          ![Any point on the near plane will not change](https://s2.loli.net/2023/10/05/rgUKX9YcVieNRoa.png)
+
+          所以第三行一定是 $\begin{pmatrix}0&0&A&B\end{pmatrix}$ 的形式
+          ![the form of the third row](https://s2.loli.net/2023/10/05/OmrIc8qo6ZUWbyu.png)
+
+          同时，已知：$An+B=n^2$
+        - 远平面 (z = f) 上的任意点的 z 坐标不会改变：$(x, y, f, 1)$ to $(x', y', f, 1)$
+          取远平面的中心点：$(0, 0, f, 1)$ to $(0, 0, f, 1)$
+          可得 $Af+B=f^2$
+          ![the transformation of (0, 0, f, 1)](https://s2.loli.net/2023/10/05/nhc13ZTHMkdV9jN.png)
+        - 求解 A 和 B：
+          ![Solve for A and B](https://s2.loli.net/2023/10/05/tzFZSBVsvwlgHDR.png)
+    - 最终，得到 $M_{persp\rightarrow ortho}$：
+      $$M_{persp\rightarrow ortho}=\begin{pmatrix}n&0&0&0\\0&n&0&0\\0&0&n+f&-nf\\0&0&1&0\end{pmatrix}$$
+    - 接下来？
+        - 进行正交投影 $M_{ortho}$
+        - $M_{persp}=M_{ortho}M_{persp\rightarrow ortho}$
+
+$$M_{persp\rightarrow ortho}=\begin{bmatrix}\frac2{r-l}&0&0&0\\0&\frac2{t-b}&0&0\\0&0&\frac2{n-f}&0\\0&0&0&1\end{bmatrix}\begin{bmatrix}1&0&0&-\frac{r+l}2\\0&1&0&-\frac{t+b}2\\0&0&1&-\frac{n+f}2\\0&0&0&1\end{bmatrix}\begin{pmatrix}n&0&0&0\\0&n&0&0\\0&0&n+f&-nf\\0&0&1&0\end{pmatrix}$$
+
+> 最后的小问题：frustum 中间平面 $z = \frac{n+f}{2}$ 的点，经过 “挤压” 后会变得更远还是更近？
+> 
+> 我们只关注 z 坐标的变化，可以观察中间平面的中心点 $\begin{pmatrix}0&0&\frac{n+f}2&1\end{pmatrix}$ 
+> 记该点为 V 点，坐标系原点为 O 点，$\overset\rightharpoonup v=\overset\rightharpoonup{OV}$
+> 则有：$\overset\rightharpoonup v_{persp\rightarrow ortho}=M_{persp\rightarrow ortho}\overset\rightharpoonup v$
+> $$\overset\rightharpoonup v_{persp\rightarrow ortho}=\begin{pmatrix}n&0&0&0\\0&n&0&0\\0&0&n+f&-nf\\0&0&1&0\end{pmatrix}\begin{pmatrix}0\\0\\\frac{n+f}2\\1\end{pmatrix}=\begin{pmatrix}0\\0\\n+f-\frac{2nf}{n+f}\\1\end{pmatrix}$$
+> 
+> 比较 $z_{persp\rightarrow ortho}=n+f-\frac{2nf}{n+f}$ 和 $z=\frac{n+f}{2}$ 的大小：
+> 假设 $\triangle=z_{persp\rightarrow ortho}-z$
+> $$\triangle=\frac{n+f}2-\frac{2nf}{n+f}=\frac{(n+f)^2-4nf}{2(n+f)}=\frac{(n-f)^2}{2(n+f)}$$
+> 因为相机位置在原点，看向 -Z，应该有：f < n < 0，则 $\triangle<0$
+> 也就是 $z_{persp\rightarrow ortho}<z$，所以是变远了
+>
+> 事实上，对远近平面中间的任意点，可以类似以上证明得出结论：“挤压” 后都会变远。
+> [[GAMES101] 投影变换和模型变换](https://zhuanlan.zhihu.com/p/447588647)
