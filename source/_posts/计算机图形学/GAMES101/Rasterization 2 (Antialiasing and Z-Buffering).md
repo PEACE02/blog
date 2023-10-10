@@ -195,20 +195,7 @@ cover: https://s2.loli.net/2023/10/09/g1l5nzsSxUroku2.jpg
 
 ### Antialiasing By Supersampling (MSAA)
 
-> 超级采样抗锯齿 （Super-Sampling Anti-Aliasing，简称SSAA）
-> 古老的全图抗锯齿。把图片放进缓存并放大，把放大后的图像像素采样临近2个或4个像素，混合，生成的最终像素，令图形的边缘色彩过渡趋于平滑，最后把图像还原回原来大小。缺点：很吃性能。
-> 
-> 多重采样抗锯齿（Multi-Sampling Anti-Aliasing，简称MSAA）
-> 首先来自于OpenGL。具体是 MSAA 只对 Z 缓存（Z-Buffer）和模板缓存 (Stencil Buffer) 中的数据进行超级采样抗锯齿的处理。可以简单理解为只对多边形的边缘进行抗锯齿处理。相比SSAA对画面中所有数据进行处理，MSAA对资源的消耗需求大大减弱（优点），不过在画质上可能稍有不如SSAA（缺点）。
-> 
-> MSAA 和 SSAA 的区别？
-> https://www.zhihu.com/question/20236638
-> ![MSAA vs SSAA](https://s2.loli.net/2023/10/09/3yM1e75Pag6pdUE.png)
-
-
-实际上计算每一个像素的平均值（求这个像素被三角形覆盖的面积），这并不简单，而且计算量很大，于是我们采用近似处理的方法。
-
-**超采样**抗锯齿：
+实际上计算每一个像素的平均值（求这个像素被三角形覆盖的面积），这并不简单，而且计算量很大，于是我们采用近似处理的方法。**超采样**抗锯齿：
 对一个像素内的多个位置进行采样，并对它们的值求平均值，来近似 1 像素盒式滤波器（1-pixel box filter）的效果：
 ![4x4 supersampling](https://s2.loli.net/2023/10/09/Dji5sUdR3nqSNzg.png)
 
@@ -227,10 +214,19 @@ cover: https://s2.loli.net/2023/10/09/g1l5nzsSxUroku2.jpg
 4. 单点采样和 4x4 超采样对比：
 ![Point Sampling vs 4x4 Supersampling](https://s2.loli.net/2023/10/09/WCqDbIZQOeJXNgj.png)
 
-> 把一个像素细分为 NxN 个更小的次像素，以分出来的次像素值求平均表示该像素的值，就像**模拟**在一个高分辨率屏幕下的光栅化，再进行像素合并（取平均）变为低分辨率下的光栅化（SSAA）。
-> 但是实际上，MSAA 并不是通过提高分辨率来解决问题的，只是为了通过这些采样点来检测三角形的覆盖。MSAA 和 SSAA 在光栅化阶段类似，主要区别在着色阶段，但这里还没有提及，后面会讲。
+> 把一个像素细分为 NxN 个更小的次像素，以分出来的次像素值求平均表示该像素的值，就像**模拟**在一个高分辨率屏幕下的光栅化，再进行像素合并（取平均）变为低分辨率下的光栅化，这是 SSAA。
+> 但是 MSAA 并不是通过提高分辨率来解决问题的，只是为了通过这些采样点来检测三角形的覆盖。
+> 
+>
+> 超级采样抗锯齿 （Super-Sampling Anti-Aliasing，简称SSAA）
+> 古老的全图抗锯齿。把图片放进缓存并放大，把放大后的图像像素采样临近2个或4个像素，混合，生成的最终像素，令图形的边缘色彩过渡趋于平滑，最后把图像还原回原来大小。缺点：很吃性能。
+> 
+> 多重采样抗锯齿（Multi-Sampling Anti-Aliasing，简称MSAA）
+> 首先来自于OpenGL。具体是 MSAA 只对 Z 缓存（Z-Buffer）和模板缓存 (Stencil Buffer) 中的数据进行超级采样抗锯齿的处理。可以简单理解为只对多边形的边缘进行抗锯齿处理。相比SSAA对画面中所有数据进行处理，MSAA对资源的消耗需求大大减弱（优点），不过在画质上可能稍有不如SSAA（缺点）。
+> 
+> MSAA 和 SSAA 的区别？
 > https://www.zhihu.com/question/20236638
-
+> ![MSAA vs SSAA](https://s2.loli.net/2023/10/09/3yM1e75Pag6pdUE.png)
 
 ### 现代抗锯齿 Antialiasing Today
 - MSAA 的代价是什么？
@@ -245,14 +241,19 @@ cover: https://s2.loli.net/2023/10/09/g1l5nzsSxUroku2.jpg
 
 
 # 可见性 / 遮挡 Visibility / occlusion
+
+之前提到的光栅化都只考虑对一个三角形，实际场景由好多三角形组成，各自离相机的距离不一样，如何把这些三角形都画在屏幕上，并且它们的遮挡关系是对的：近处的永远要遮住远处的，这就是可见性/遮挡的问题。
+
 ## 画家算法 Painter’s Algorithm
-受到画家如何从后到前绘画的启发，在帧缓冲区中覆盖 overwrite
+受到画家如何从后到前绘画的启发，在帧缓冲区（frame buffer）中覆盖 overwrite
+> 先画（光栅化）远处的物体，然后再画（光栅化）近处的物体来覆盖远处的物体
+
 ![Painter’s Algorithm](https://s2.loli.net/2023/10/09/8S9ajlzR4Kuxeyi.png)
 
-需要对深度排序 (n 个三角形为 O(nlogn))，可能具有无法解析的深度顺序
+需要对深度排序 (对 n 个三角形的深度排序为 O(nlogn))，可能有无法解析的深度顺序 
 ![unresolvable depth order](https://s2.loli.net/2023/10/09/HVSgFWohZk7Xifr.png)
 
-## Z-buffering
+## 深度缓存 Z-buffering
 
 This is the algorithm that eventually won.
 
@@ -268,16 +269,18 @@ This is the algorithm that eventually won.
 
 ### Z-buffer 算法
 
-初始化深度缓冲区为无穷 ∞，光栅化期间：
+初始化深度缓冲区为无穷远 ∞，光栅化期间：
 ![Z-Buffer Algorithm](https://s2.loli.net/2023/10/09/AgKoXawyCet65Tl.png)
 
 ![Z-Buffer Algorithm](https://s2.loli.net/2023/10/09/ObCDSp9zuklftni.png)
 
+> 画家算法是对所有三角形的深度排序，而深度缓存是（遍历所有三角形）对每一个被三角形覆盖的像素按最近深度同时更新颜色和深度。每个三角形不同的位置有不同的深度，这个后面会说如何计算。根据像素的深度比较，如果有更近的，同时更新颜色值（frame buffer）和深度值（z-buffer）
+
 ### Z-Buffer 复杂度 Complexity
-- n 个三角形 O(n)（假设覆盖范围恒定）
-- 如何在线性时间内对n个三角形进行排序？
+- n 个三角形时间复杂度 O(n)（假设三角形覆盖的像素数为一个常数）
+- 这里并不是在排序，只是记录最小值
 
-以不同的顺序绘制三角形？
+假设不会出现两个不同的三角形在一个像素上有相同的深度，深度缓存算法与所有三角形遍历绘制的顺序无关。
 
-最重要的可见性算法
-- 在所有 GPU 的硬件中实现
+深度缓存 z-buffer 算法是非常重要的可见性算法，广泛应用在几乎所有 GPU 硬件中。
+> 目前来说所有的光栅化都会做一个深度的测试，每个像素都维护一个这样的一个深度的测试，就可以得到正确的遮挡算法。对 MSAA（包括SSAA）来说，z-buffer 是对每一个采样点而不再是每一个像素维护一个深度值。但是 z-buffer 处理不了透明物体。
