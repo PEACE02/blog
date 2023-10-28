@@ -1,5 +1,5 @@
 ---
-title: Shading 1 (Illumination, Shading, Graphics Pipeline)
+title: Shading (Illumination, Shading, Graphics Pipeline)
 date: 2023-10-14 00:00:00
 tags:
 updated:
