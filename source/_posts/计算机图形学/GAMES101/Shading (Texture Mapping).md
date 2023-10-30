@@ -7,7 +7,7 @@ categories:
 - 计算机图形学
 - GAMES101
 keywords:
-description: 纹理映射、重心坐标插值
+description: 纹理映射、重心坐标插值、线性插值、Mipmap、Ripmap、凹凸贴图...
 cover: https://s2.loli.net/2023/10/18/xcXwVrkaTWKFOSi.jpg
 ---
 
@@ -70,7 +70,7 @@ Every 3D surface point also has a place where it goes in the 2D image (**texture
 ![Using Barycentric Coordinates](https://s2.loli.net/2023/10/18/f2pPWeiOFBYtjN3.png)
 
 
-## 纹理的应用
+## 纹理映射
 
 ### 简单纹理映射：漫反射颜色 Diffuse Color
 
@@ -200,3 +200,78 @@ Mipmap 的关键在于我们拿到纹理后就可以在渲染之前提前计算�
 
 应对不规则形状的查询，还有其他方法。比如 [EWA 过滤](https://zhuanlan.zhihu.com/p/105167411)，使用多次查询的加权平均，mipmap 的层次结构思想仍然有用，可以应对不规则查询。
 ![EWA filtering](https://s2.loli.net/2023/10/28/3fqMoe5QxPmc1vb.png)
+
+
+## 纹理应用
+
+在现代 GPU 里，我们可以理解为纹理就是一块内存数据，我们可以在这块内存区域进行点查询/范围查询。纹理不一定限制为图像，还有许多应用：环境光照 Environment lighting、存储微观几何图形 Store microgeometry、程序纹理 Procedural textures、实体建模 Solid modeling、体积渲染 Volume rendering...
+
+### 环境光照
+
+环境光照，也叫环境光映射、环境贴图，Environment Map。我们可以用纹理来描述来自四面八方的环境光，如下图左侧为环境光照纹理，渲染到右侧的茶壶。
+![Environment Map](https://s2.loli.net/2023/10/30/gY9NVCM36pGJWxA.png)
+
+> 光照效果应该与方向和位置距离都有关系，但是环境光照贴图假设光源只记录方向信息，也就是认为距离无限远，没有实际的深度意义。
+
+#### Spherical Map
+
+下图左侧是用于渲染真实光照的环境贴图，也就是说可以把环境光存储在球面上。
+![Environmental Lighting](https://s2.loli.net/2023/10/30/jybZhNs6ORPuxof.png)
+
+球形环境贴图 Spherical Environment Map
+![Spherical Environment Map](https://s2.loli.net/2023/10/30/9PgipKZSICtD4Ls.png)
+
+如果我们把球形环境贴图展开，会有下图中上/下边扭曲的问题，也就是说我们通过球面存储环境光，虽然可以描述不同的方向位置，但不是一个均匀的描述，在靠近极点的地方会出现一些扭曲的现象。
+![Spherical Map — Problem](https://s2.loli.net/2023/10/30/OlByNisDuRpCbrq.png)
+
+#### Cube Map
+
+用一个立方体包围球体，从球心向外的向量沿该方向可以映射到立方体表面的点，也就是说可以把光照信息存在一个立方体的表面。
+![Cube Map](https://s2.loli.net/2023/10/30/8fw2YDnocP934Nk.png)
+
+那么该立方体具有 6 个方形纹理贴图，如下图示例。因为立方体各个面基本都是均匀的，很少有扭曲现象的发生。当然它也有问题，比如我们要查询来自某一个方向的光照是多少，在球面上可以很容易求出来，现在立方体上还要先判断这个方向对应在立方体的哪个面，也就是多了一些计算，但是也很快。
+![Cube Map](https://s2.loli.net/2023/10/30/XMwRNi1tosd6SCq.png)
+
+用球体或立方体的方式来描述环境光，本质是一样的，都是为了描述来自不同方向的光照信息。
+
+
+### 凹凸贴图/法线贴图 Bump/normal mapping
+
+纹理不是只能描述颜色，它可以定义任何不同位置任何不同属性。
+
+比如纹理可以定义在一个基础的表面上任意一点，沿着它的法线方向往上往下各走多少，也就是定义任意一点的相对高度是多少。也就是说在不把几何形体变复杂的情况下，可以通过应用一个复杂的纹理，从而定义任意一点的相对高度，相对高度发生变化，法线就会发生变化，那么 shading 着色的结果就会发生变化，就可以看到物体表面不同的明暗对比。
+
+![Fake the detailed geometry](https://s2.loli.net/2023/10/30/Ya3cubdqGvXf6F2.png)
+
+其实我们在视图人为的做一个假的法线出来，通过纹理映射在任何一个点都可以求出一个假的法线，通过假的法线可以给一个假的着色结果，从而让人觉得有凹凸的效果，而实际上并没有改变几何的形状，这就是凹凸贴图的基本原理。
+
+由纹理定义的每个 texel 的“高度偏移”，如何修改法线向量？
+![Bump Mapping](https://s2.loli.net/2023/10/30/uSjCRpIg3iVKk9f.png)
+
+如下图，假设在一个水平线上，初始表面法线为 (0, 1)，通过凹凸贴图定义切线 (1, dp)，其中 c 为凹凸贴图的影响系数，h 是根据 (u, v) 得到的纹理颜色，再通过切线算法线（逆时针旋转 90°，再归一化）。
+![perturb the normal (in flatland)](https://s2.loli.net/2023/10/30/Tg9j1emcadsGyMN.png)
+
+那么对二维贴图，同样假设原始表面法线为 (0, 0, 1)，在空间曲面上一点 p，定义两个正交方向，在这两个方向上的切线方向分别为 (1, 0, dp/du), (0, 1, dp/dv)，两个切线向量叉乘，得到法线向量为 (-dp/du, -dp/dv, 1)，再归一化即为法线方向。
+![perturb the normal (in 3D)](https://s2.loli.net/2023/10/30/vpDWRPrSLd7AZqM.png)
+
+注意这里是在任意点的局部坐标系中，我们假定任意点的原始法线为 (0, 0, 1)，计算完成后再反馈给世界坐标的法线。[凹凸贴图、法线贴图、切线空间、TBN矩阵讲解](https://zhuanlan.zhihu.com/p/412555049)
+
+
+### 位移贴图 Displacement mapping
+
+位移贴图与凹凸贴图使用的纹理是一样的，但是位移贴图是真实的移动了顶点的位置。如下图左侧，使用凹凸贴图并没有真正改变几何结构，有些地方会露馅：在边缘位置会很圆润，物体阴影也很圆润；由于凹凸而在物体本身产生阴影（投影到自己身上），右图在物体本身有凸起的投影，而左侧没有。**而位移贴图实际上改变了顶点的位置。**
+![Displacement mapping](https://s2.loli.net/2023/10/30/mB82PORc1fyCdwV.png)
+
+可以看出位移贴图的效果是更好的，但是代价是要求模型本身的三角形得足够细，细到三角形顶点的间隔要比纹理定义的频率还要高才行，需要模型能够跟得上纹理的变化速度。但并不需要一开始就有一个足够精细的模型，可以根据需要来做**曲面细分**，检测判断将一个三角形拆分成多个小三角形。
+
+
+### 纹理的其他应用
+
+- 定义三维的纹理，3D 程序噪声 + 实体建模。
+![3D Procedural Noise + Solid Modeling](https://s2.loli.net/2023/10/30/qu1hUXfm6xH4LVe.png)
+
+- 提供预计算着色，记录一些已经计算好的信息（下图中间，环境光遮蔽(AO)纹理贴图）。
+![Provide Precomputed Shading](https://s2.loli.net/2023/10/30/Lo3UJhAxKFPGa9H.png)
+
+- 3D 纹理和体积渲染。
+![3D Textures and Volume Rendering](https://s2.loli.net/2023/10/30/TdxAqDWOpsSwI5n.png)
