@@ -429,11 +429,11 @@ footer:
 
 # Baidu Analytics
 # https://tongji.baidu.com/web/welcome/login
-baidu_analytics:
+baidu_analytics: 1d60a16af61c4ff6537bd1f2a4ccae0b
 
 # Google Analytics
 # https://analytics.google.com/analytics/web/
-google_analytics:
+google_analytics: UA-299995647-1
 
 # CNZZ Analytics
 # https://www.umeng.com/
@@ -452,10 +452,10 @@ microsoft_clarity:
 
 # Google Adsense (谷歌廣告)
 google_adsense:
-  enable: false
+  enable: true
   auto_ads: true
   js: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
-  client:
+  client: ca-pub-9727707841587452
   enable_page_level_ads: true
 
 # Insert ads manually (手動插入廣告)
