@@ -113,3 +113,10 @@ sitemap:
   path: sitemap.xml # 索引地图路径
   tag: false # 标签页不添加到网站地图中
   category: false # 分类页不添加到网站地图中
+
+# hexo-filter-nofollow https://github.com/hexojs/hexo-filter-nofollow?tab=readme-ov-file
+nofollow:
+  enable: true
+  field: site
+  exclude:
+    - 'wangjiapeng.com'
