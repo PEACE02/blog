@@ -70,29 +70,35 @@ cover: https://s2.loli.net/2024/01/24/sxr7ICXBY4PwDzO.png
 
 国内目前自己操作主要是使用虚拟信用卡。
 
-市面上有多个虚拟卡平台，推荐一个用户友好、操作简便的平台，全流程仅需约2分钟。这对缺乏国外信用卡的用户来说是一个完美的解决方案。注册链接：
-[WildCard | 一分钟开卡，轻松订阅海外软件服务](https://bewildcard.com/i/AI666)
+市面上有多个虚拟卡平台，推荐一个用户友好、操作简便的平台，全流程仅需约2分钟。这对缺乏国外信用卡的用户来说是一个完美的解决方案。注册链接：[WildCard | 一分钟开卡，轻松订阅海外软件服务](https://bewildcard.com/i/AI666)
 
 这是一家国内公司，通过支付宝实名认证，安全无忧。除了 GPT，也可用于其他需要国外信用卡的场景，比如 Onlyfans...
 
 开通的是虚拟信用卡，使用邀请码可减少 2 美金开卡费，一年开卡费 71rmb 左右，两年开卡费 100rmb 左右。
+
 ![wildcard](https://s2.loli.net/2024/01/24/al4RSCprFbdUGjK.png)
 
 填写个人信息用于支付宝验证：
+
 ![wildcard](https://s2.loli.net/2024/01/24/vRVXlE4qnsSHBCt.png)
 
 开卡成功：
+
 ![wildcard](https://s2.loli.net/2024/01/24/BGpwjdU3LvblNhZ.png)
 
 注意，这支付的只是开卡费，升级GPT需要另外充值，如果没有消费成功或余额剩余，可以随时提现余额到支付宝。
 
 开卡成功后可一键升级GPT4，但是需要足够的余额。也可以购买一键注册，但是上面我们可以自己注册。
+
 ![wildcard](https://s2.loli.net/2024/01/24/47CHtRdyuO5BiSe.png)
+
+如果是新账户，显示升级需要排队，可以在登录 gpt 之后，再访问下面这个网址，可以绕过排队。
+[https://chat.openai.com/invite/accepted](https://chat.openai.com/invite/accepted)
 
 **如果只想升级GPT，不想花费开卡费，可找我代充，需要一定手续费。**
 ![GPT代充微信](https://s2.loli.net/2024/01/24/G3gFQzKs8rEXBtL.jpg)
 
-GPT升级如遇到支付问题，可在 bewildcard 咨询客服。
+**GPT升级如遇到支付问题，可在 bewildcard 咨询客服。**
 
 已经开过卡的用户，开通新的卡 2 年只需约 71rmb 左右。
 ![Wildcard](https://s2.loli.net/2024/01/24/rqeyMwuXcLRzj9G.png)
