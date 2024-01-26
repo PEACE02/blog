@@ -1,5 +1,5 @@
 ---
-title: 国内ChatGPT账号注册及升级教程，无需手机验证码
+title: 两分钟注册ChatGPT，无需手机验证码，一键升级
 date: 2024-01-24 00:00:00
 tags: 
 - AI
