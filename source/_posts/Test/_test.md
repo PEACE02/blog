@@ -6,6 +6,6 @@ updated:
 categories:
 keywords:
 description:
-cover: /pic/Test/pic.jpeg
+cover: /images/Test/pic.jpeg
 ---
-![test](/pic/Test/pic.jpeg)
+![test](/images/Test/pic.jpeg)
