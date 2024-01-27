@@ -15,6 +15,10 @@ description: 提供虚拟信用卡升级GPT-Plus，也可用于Onlyfans等场景
 cover: https://s2.loli.net/2024/01/24/SIpG2EkTNR79ohQ.png
 ---
 
+[注册升级GPT](https://www.wangjiapeng.com/2024/01/24/ai/gpt-registration/)
+
+[订阅Onlyfans](https://www.wangjiapeng.com/2024/01/27/ai/onlyfans/)
+
 # Wildcard 虚拟信用卡介绍
 Wildcard，是一张虚拟的VISA卡，类似的VISA卡还有depay、onekey等。可以有效解决很多境外服务不支持中国境内VISA卡的窘境。Wildcard 支持 GPT Plus 一键升级，而且 Midjourney，Onlyfans，Apple Store 美区，Google Play，OpenAI API 账单等订阅都没问题。
 
