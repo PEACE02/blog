@@ -1,6 +1,6 @@
 ---
 title: test-pic
-date: 2024-01-28 00:00:00
+date: 2024-01-01 00:00:00
 tags: 
 updated:
 categories:
