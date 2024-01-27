@@ -22,7 +22,9 @@ Wildcard，是一张虚拟的VISA卡，类似的VISA卡还有depay、onekey等�
 
 # Wildcard 使用教程
 ## 注册
-注册链接：https://bewildcard.com/i/AI666 ，使用邀请码**AI666**，可减 2 美金开卡费
+注册链接：https://bewildcard.com/i/AI666
+
+使用邀请码**AI666**，可享88折优惠~（一年卡71rmb左右，两年卡100rmb左右
 ## 开卡
 ![开卡](https://s2.loli.net/2024/01/27/8oDnFMw6N3uy2Pl.png)
 ## 使用
