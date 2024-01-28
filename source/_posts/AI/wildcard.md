@@ -12,7 +12,7 @@ keywords:
 - ChatGPT
 - Onlyfans
 description: 提供虚拟信用卡升级GPT-Plus，也可用于Onlyfans等场景，GPT升级可代充
-cover: https://s2.loli.net/2024/01/24/SIpG2EkTNR79ohQ.png
+cover: https://img.wangjiapeng.com/Post/1706438251183.webp
 ---
 
 [注册升级GPT](https://www.wangjiapeng.com/2024/01/24/ai/gpt-registration/)
@@ -22,7 +22,7 @@ cover: https://s2.loli.net/2024/01/24/SIpG2EkTNR79ohQ.png
 # Wildcard 虚拟信用卡介绍
 Wildcard，是一张虚拟的VISA卡，类似的VISA卡还有depay、onekey等。可以有效解决很多境外服务不支持中国境内VISA卡的窘境。Wildcard 支持 GPT Plus 一键升级，而且 Midjourney，Onlyfans，Apple Store 美区，Google Play，OpenAI API 账单等订阅都没问题。
 
-[![WildCard 信用卡，2 分钟订阅 ChatGPT-Plus](https://s2.loli.net/2024/01/24/SIpG2EkTNR79ohQ.png)](https://bewildcard.com/i/AI666)
+[![WildCard 信用卡，2 分钟订阅 ChatGPT-Plus](https://img.wangjiapeng.com/Post/1706437617058.webp)](https://bewildcard.com/i/AI666)
 
 # Wildcard 使用教程
 ## 注册
@@ -30,13 +30,13 @@ Wildcard，是一张虚拟的VISA卡，类似的VISA卡还有depay、onekey等�
 
 使用邀请码**AI666**，可享88折优惠~（一年卡71rmb左右，两年卡100rmb左右
 ## 开卡
-![开卡](https://s2.loli.net/2024/01/27/8oDnFMw6N3uy2Pl.png)
+![1706438326236](https://img.wangjiapeng.com/Post/1706438326236.webp)
 ## 使用
-![使用](https://s2.loli.net/2024/01/27/H4hq127PAefxtNv.png)
+![1706438347617](https://img.wangjiapeng.com/Post/1706438347617.webp)
 ## 充值
-![充值](https://s2.loli.net/2024/01/27/gE9nlIku4vSZiFh.png)
+![1706438356294](https://img.wangjiapeng.com/Post/1706438356294.webp)
 ## 收费标准
-![收费](https://s2.loli.net/2024/01/27/AdBuLQ7kTbGisXl.png)
+![1706438365264](https://img.wangjiapeng.com/Post/1706438365264.webp)
 
 
 # 为什么使用 WildCard?
@@ -54,12 +54,12 @@ Wildcard，是一张虚拟的VISA卡，类似的VISA卡还有depay、onekey等�
 - 国内用户友好，支持支付宝，交易便捷省去很多中间环节。
 
 ## 一键注册升级GPT
-![一键注册升级](https://s2.loli.net/2024/01/27/Iq4C7cJrt8WTMLF.png)
+![1706438383824](https://img.wangjiapeng.com/Post/1706438383824.webp)
 ## 解决网络问题
-![解决网络问题](https://s2.loli.net/2024/01/27/O5hrNKMf7Ti6QDV.png)
+![1706438395609](https://img.wangjiapeng.com/Post/1706438395609.webp)
 ## 安全
-![安全](https://s2.loli.net/2024/01/27/Sq6r9kYImwCgRZP.png)
+![1706438410570](https://img.wangjiapeng.com/Post/1706438410570.webp)
 ## 售后保障
-![售后保障](https://s2.loli.net/2024/01/27/uATK1pBn3qCEL2I.png)
+![1706438420613](https://img.wangjiapeng.com/Post/1706438420613.webp)
 
-[![WildCard 信用卡，2 分钟订阅 ChatGPT-Plus](https://s2.loli.net/2024/01/24/SIpG2EkTNR79ohQ.png)](https://bewildcard.com/i/AI666)
+[![WildCard 信用卡，2 分钟订阅 ChatGPT-Plus](https://img.wangjiapeng.com/Post/1706437617058.webp)](https://bewildcard.com/i/AI666)

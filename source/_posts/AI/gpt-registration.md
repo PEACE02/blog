@@ -4,14 +4,14 @@ date: 2024-01-24 00:00:00
 tags: 
 - AI
 - ChatGPT
-updated:
+updated: 2024-01-26 00:00:00
 categories:
 - AI
 keywords:
 - AI
 - ChatGPT
 description: 提供虚拟信用卡升级GPT-Plus，也可用于Onlyfans等场景，GPT升级可代充
-cover: https://s2.loli.net/2024/01/24/sxr7ICXBY4PwDzO.png
+cover: https://img.wangjiapeng.com/Post/1706436283715.webp
 ---
 
 现在注册 ChatGPT 已经不需要国外手机号了，就免去了接码平台的步骤，只要能科学上网，即可注册。
@@ -29,16 +29,16 @@ cover: https://s2.loli.net/2024/01/24/sxr7ICXBY4PwDzO.png
 访问 proton：[https://proton.me/](https://proton.me/)
 
 选择右上角的 「**Create a free account**」：
-![proton](https://s2.loli.net/2024/01/24/YvZWNJuMRVKDO2a.png)
+![1706436829154](https://img.wangjiapeng.com/Post/1706436829154.webp)
 
 选择免费套餐：
-![proton](https://s2.loli.net/2024/01/24/j3d2uF5pQlKsa7o.png)
+![1706436988020](https://img.wangjiapeng.com/Post/1706436988020.webp)
 
 选择邮箱后缀，设置用户名和密码：
-![proton](https://s2.loli.net/2024/01/24/MGNJPODt4b1m9Az.png)
+![1706437201211](https://img.wangjiapeng.com/Post/1706437201211.webp)
 
 通过真人检验，可选择跳过恢复验证：
-![proton](https://s2.loli.net/2024/01/24/vb3Qfre4OFSNwMR.png)
+![1706437235358](https://img.wangjiapeng.com/Post/1706437235358.webp)
 
 注册完后，登陆邮箱，下面注册 OpenAI 时需要接收验证码。
 
@@ -48,22 +48,22 @@ cover: https://s2.loli.net/2024/01/24/sxr7ICXBY4PwDzO.png
 首先打开 [OpenAI](https://chat.openai.com/) 的账户注册页面：https://chat.openai.com/
 
 使用邮箱注册，或使用其他账号直接登录：
-![chatgpt](https://s2.loli.net/2024/01/24/KQrZYJVyFCA8XHp.png)
+![1706437272218](https://img.wangjiapeng.com/Post/1706437272218.webp)
 
 设置 OpenAI 密码，注意不是之前邮箱的密码：
-![chatgpt](https://s2.loli.net/2024/01/24/qBcZgOjdTkCM1Uz.png)
+![1706437351454](https://img.wangjiapeng.com/Post/1706437351454.webp)
 
 邮箱验证：
-![proton](https://s2.loli.net/2024/01/24/vw2SmnaDdOJryX7.png)
+![1706437369583](https://img.wangjiapeng.com/Post/1706437369583.webp)
 
 输入姓名和生日：
-![chatgpt](https://s2.loli.net/2024/01/24/LKuYf1tHsOJ4j7e.png)
+![1706437394617](https://img.wangjiapeng.com/Post/1706437394617.webp)
 
 如果需要选择创建ChatGPT账户或开发者API，选择ChatGPT账户即可。登录成功：
-![chatgpt](https://s2.loli.net/2024/01/24/upevkZ4mcsJO9tx.png)
+![1706437408596](https://img.wangjiapeng.com/Post/1706437408596.webp)
 
 开始使用：
-![chatgpt](https://s2.loli.net/2024/01/24/16UauIznq2K83eH.png)
+![1706437450654](https://img.wangjiapeng.com/Post/1706437450654.webp)
 
 
 # 升级 GPT4.0
@@ -76,31 +76,31 @@ cover: https://s2.loli.net/2024/01/24/sxr7ICXBY4PwDzO.png
 
 开通的是虚拟信用卡，使用邀请码可减少 2 美金开卡费，一年开卡费 71rmb 左右，两年开卡费 100rmb 左右。
 
-![wildcard](https://s2.loli.net/2024/01/24/al4RSCprFbdUGjK.png)
+![1706437466416](https://img.wangjiapeng.com/Post/1706437466416.webp)
 
 填写个人信息用于支付宝验证：
 
-![wildcard](https://s2.loli.net/2024/01/24/vRVXlE4qnsSHBCt.png)
+![1706437478365](https://img.wangjiapeng.com/Post/1706437478365.webp)
 
 开卡成功：
 
-![wildcard](https://s2.loli.net/2024/01/24/BGpwjdU3LvblNhZ.png)
+![1706437492020](https://img.wangjiapeng.com/Post/1706437492020.webp)
 
 注意，这支付的只是开卡费，升级GPT需要另外充值，如果没有消费成功或余额剩余，可以随时提现余额到支付宝。
 
 开卡成功后可一键升级GPT4，但是需要足够的余额。也可以购买一键注册，但是上面我们可以自己注册。
 
-![wildcard](https://s2.loli.net/2024/01/24/47CHtRdyuO5BiSe.png)
+![1706437505615](https://img.wangjiapeng.com/Post/1706437505615.webp)
 
 如果是新账户，显示升级需要排队，可以在登录 gpt 之后，再访问下面这个网址，可以绕过排队。
 [https://chat.openai.com/invite/accepted](https://chat.openai.com/invite/accepted)
 
 **如果只想升级GPT，不想花费开卡费，可找我代充，需要一定手续费。**
-![GPT代充微信](https://s2.loli.net/2024/01/24/G3gFQzKs8rEXBtL.jpg)
+![1706437527243](https://img.wangjiapeng.com/Post/1706437527243.webp)
 
 **GPT升级如遇到支付问题，可在 bewildcard 咨询客服。**
 
 已经开过卡的用户，开通新的卡 2 年只需约 71rmb 左右。
-![Wildcard](https://s2.loli.net/2024/01/24/rqeyMwuXcLRzj9G.png)
+![1706437597566](https://img.wangjiapeng.com/Post/1706437597566.webp)
 
-[![WildCard 信用卡，2 分钟订阅 ChatGPT-Plus](https://s2.loli.net/2024/01/24/SIpG2EkTNR79ohQ.png)](https://bewildcard.com/i/AI666)
+[![WildCard 信用卡，2 分钟订阅 ChatGPT-Plus](https://img.wangjiapeng.com/Post/1706437617058.webp)](https://bewildcard.com/i/AI666)
