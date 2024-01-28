@@ -76,42 +76,42 @@ katex:
 # --------------------------------------
 
 # Favicon（網站圖標
-favicon: /images/Config/favicon.webp
+favicon: https://img.wangjiapeng.com/Config/favicon.webp
 
 # Avatar (頭像)
 avatar:
-  img: /images/Config/avatar.webp
+  img: https://img.wangjiapeng.com/Config/avatar.webp
   effect: false
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img: /images/Config/index_img.jpg
+index_img: https://img.wangjiapeng.com/Config/index_img.webp
 
 # If the banner of page not setting, it will show the top_img
 default_top_img:
 
 # The banner image of archive page
-archive_img: /images/Config/archive_img.jpg
+archive_img: https://img.wangjiapeng.com/Config/archive_img.webp
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: /images/Config/tag_img.jpg
+tag_img: https://img.wangjiapeng.com/Config/tag_img.webp
 
 # The banner image of tag page
 # format:
 #  - tag name: xxxxx
-tag_per_img: /images/Config/tag_img.jpg
+tag_per_img: https://img.wangjiapeng.com/Config/tag_img.webp
 
 # If the banner of category page not setting, it will show the top_img
 # note: category page, not categories page (子分類頁面的 top_img)
-category_img: /images/Config/category_img.jpg
+category_img: https://img.wangjiapeng.com/Config/category_img.webp
 
 # The banner image of category page
 # format:
 #  - category name: xxxxx
-category_per_img: /images/Config/category_img.jpg
+category_per_img: https://img.wangjiapeng.com/Config/category_img.webp
 
 cover:
   # display the cover or not (是否顯示文章封面)
@@ -133,7 +133,7 @@ error_img:
 error_404:
   enable: true
   subtitle: 'Sorry,,,╥﹏╥...Page Not Found'
-  background: /images/Config/error_404.jpg
+  background: https://img.wangjiapeng.com/Config/error_404.webp
 
 post_meta:
   page: # Home Page
@@ -513,7 +513,7 @@ tag_ui: # 留空或 index
 # Website Background (設置網站背景)
 # can set it to color or image (可設置圖片 或者 顔色)
 # The formal of image: url(http://xxxxxx.com/xxx.jpg)
-background: url(/images/Config/background.jpg)
+background: url(https://img.wangjiapeng.com/Config/background.webp)
 
 # Footer Background
 footer_bg: true
