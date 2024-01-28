@@ -1,11 +1,14 @@
 ---
 title: test-pic
-date: 2024-01-01 00:00:00
+date: 
 tags: 
 updated:
 categories:
 keywords:
 description:
-cover: /images/Test/pic.jpeg
+cover: https://img.wangjiapeng.com/Post/Test-248KB.webp
 ---
-![test](/images/Test/pic.jpeg)
+未压缩jpeg 3226KB
+![Test-3226KB](https://img.wangjiapeng.com/Post/Test-3226KB.jpeg)
+压缩webp 248KB
+![Test-248KB](https://img.wangjiapeng.com/Post/Test-248KB.webp)
