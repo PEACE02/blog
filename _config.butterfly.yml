@@ -75,10 +75,10 @@ katex:
 # Image (圖片設置)
 # --------------------------------------
 
-# Favicon（網站圖標）https://s2.loli.net/2023/02/01/8BG657OhWaRVAlx.png
+# Favicon（網站圖標
 favicon: /images/Config/favicon.webp
 
-# Avatar (頭像) https://s2.loli.net/2022/09/02/hvIOsXcCe7UGYBS.jpg
+# Avatar (頭像)
 avatar:
   img: /images/Config/avatar.webp
   effect: false
