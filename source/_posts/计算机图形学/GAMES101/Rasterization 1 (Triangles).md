@@ -8,7 +8,7 @@ categories:
 - GAMES101
 keywords:
 description: 视口变换、不同的光栅显示、光栅化三角形
-cover: https://s2.loli.net/2023/10/07/GiEl257dU3bWs41.jpg
+cover: https://img.wangjiapeng.com/Post/1706515858813.webp
 ---
 
 # 结束观测变换 Finishing up Viewing
