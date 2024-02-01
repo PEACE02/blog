@@ -4,13 +4,13 @@ date: 2024-01-24 00:00:00
 tags: 
 - AI
 - ChatGPT
-updated: 2024-01-26 00:00:00
+updated:
 categories:
 - AI
 keywords:
 - AI
 - ChatGPT
-description: 提供虚拟信用卡升级GPT-Plus，也可用于Onlyfans等场景，GPT升级可代充
+description: 国内注册GPT保姆级教程，手把手教学，使用虚拟信用卡一键升级GPT-Plus，也可用于Onlyfans等场景，GPT升级可代充
 cover: https://img.wangjiapeng.com/Post/1706436283715.webp
 ---
 
@@ -37,11 +37,14 @@ cover: https://img.wangjiapeng.com/Post/1706436283715.webp
 选择邮箱后缀，设置用户名和密码：
 ![1706437201211](https://img.wangjiapeng.com/Post/1706437201211.webp)
 
-通过真人检验，可选择跳过恢复验证：
+通过真人检验，在这里设置恢复方法（手机号或邮箱），最好不要跳过：
 ![1706437235358](https://img.wangjiapeng.com/Post/1706437235358.webp)
 
 注册完后，登陆邮箱，下面注册 OpenAI 时需要接收验证码。
 
+如果上面跳过设置恢复方法，可能会收到下图邮件提示绑定手机号或邮箱，否则无法收到GPT的验证邮件。
+
+![1706799126730](https://img.wangjiapeng.com/Post/1706799126730.webp)
 
 # 注册 OpenAI 账号
 
